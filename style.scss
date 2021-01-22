@@ -1,0 +1,401 @@
+@import './grid';
+@import "./variables";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Yusei Magic', sans-serif;
+    background-color: #f3f3f3;
+}
+
+.header {
+    padding: 15px 10px;
+    background-color: white;
+    border-bottom: 3px solid #4e26fd;
+}
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+.row {
+    display: flex;
+    margin: 0 -15px; 
+}
+[class*="col-"] {
+    padding: 0 15px;
+}
+.flex-wrap {
+    flex-wrap:wrap;
+}
+.block-center {
+    align-items: center;
+    justify-content: space-between;
+}
+.menu {
+    @include flex(flex-end);
+
+    li {
+        border: 2px solid transparent;
+        padding: 5px;
+        margin: 5px;
+
+        a {
+           @include linkMenuA(black);
+           @include box(max-content, 30px);
+           line-height: 30px; 
+        }
+        &:hover  {
+            @include hoverMenuA();
+        }
+    }
+
+}
+.footer {
+    background-color: black;
+    padding-top: 15px;
+    .logo {
+        padding: 20px 0;
+    }
+    .footer-contacts {
+        color: white;
+        @include descriptionText(12px);
+        display: flex;
+        flex-direction: column;
+    }
+    .phone-number {
+        @include footerContInfo();
+        background: url(images/phone_vertical_icon.png) no-repeat 4% 0;
+    }
+    .email-adress {
+        @include footerContInfo();
+        background: url(images/mail_icon.png) no-repeat 2% 56%;
+    }
+    .adress {
+        @include footerContInfo();
+        background: url(images/location_icon.png) no-repeat;
+    }
+    
+}
+.social-networks {
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+.social-networks-list {
+    @include flex(center);
+    padding-bottom: 10px;
+    li {
+        border: 1px solid white;
+        margin-left: 10px; 
+        &:hover {
+            border-color: $maincolor;
+        } 
+    }
+    a {
+        display: block;
+    }
+    .facebook {
+        @include box(26px);
+        background: url(images/facebook_white_icon.png) no-repeat center;
+    }
+    .twitter {
+        @include box(26px);
+        background: url(images/twiter_white_icon.png) no-repeat center;
+    }
+    .instagram {
+        @include box(26px);
+        background: url(images/instagram_white_icon.png) no-repeat center;
+    }
+    .youtube {
+        @include box(26px);
+        background: url(images/youtube_white_icon.png) no-repeat center;
+    }
+    .facebook:hover {
+        background: url(images/facebook_blue_icon.png) no-repeat center;
+    }
+    .twitter:hover {
+        background: url(images/twiter_blue_icon.png) no-repeat center;
+    }
+    .instagram:hover {
+        background: url(images/instagram_blue_icon.png) no-repeat center;
+    }
+    .youtube:hover {
+        background: url(images/youtube_blue_icon.png) no-repeat center;
+    }
+}
+.footer-information {
+    border-top: 1px solid white;
+    @include cardTitle(16px);
+    color: white;
+}
+
+
+.map {
+    margin: 40px 0 30px 0;
+}
+
+.contacts-details {
+    margin: 30px 0 40px 0;
+    padding: 20px;
+    border-radius: 4px;
+    background-color:#e5e6e6;
+    color: #777777;
+}
+.contacts-information {
+    margin: 25px 0 30px 0;
+    div {
+        margin-top: 15px;
+        color: #777777;
+    }
+    .phone-number {
+        @include footerContInfo();
+        background: url(images/phone_vertical_icon_color.png) no-repeat 4% 0;
+    }
+    .email-adress {
+        @include footerContInfo();
+        background: url(images/mail_icon_color.png) no-repeat 2% 56%;
+    }
+    .adress {
+        @include footerContInfo();
+        background: url(images/location_icon_color.png) no-repeat;
+    }
+}
+
+.section-title {
+    color: #7f8c8c;
+}
+
+.feed-back-form {
+    padding: 20px 0;
+    margin-bottom: 60px;
+    input {
+        background-color:#e5e6e6;
+        border-radius: 4px;
+        height: 40px;
+        width: 55%;
+        margin: 10px 15px 10px 0;
+        border-color:transparent;
+        padding: 10px;
+    }
+    span {
+        color:#7f8c8c;
+    }
+    .feed-back-message {
+        height: 200px;
+        background-color:#e5e6e6;
+        border-radius: 4px;
+        width: 100%;
+        margin: 10px 15px 10px 0;
+        border-color:transparent;
+        padding: 10px;
+    }
+    .feed-back-send {
+        width: 150px;
+        height: 40px;
+        background-color: $maincolor;
+        color: white;
+        border:2px solid transparent;
+        outline: none;
+        border-radius: 4px;
+        font-weight: bold;
+        margin-top: 15px;
+
+        &:hover {
+            border:2px solid $maincolor;
+            color:$maincolor;
+            background-color: white;
+            font-weight: bold;
+        }
+
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .header {
+        position: sticky;
+        top:0;
+        z-index: 30;
+    }
+    .flex-wrap {
+        flex-direction: column-reverse;
+    }
+
+    .footer-contacts {
+        align-items: center;
+        order: 3;
+    }
+    .hide-XS {
+        display: none;
+    }
+    .hiden-menu {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .navigation {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: all 550ms ease-in-out;
+        transform: translateY(100%);
+        background: white;  
+    }
+    .nav-mobile-menu {
+        width: 35px;
+        height: 35px;
+        position: relative;
+        background-color: $maincolor;
+        border-radius: 4px;
+      
+        span {
+          display: block;
+          position: absolute;
+          top: 16px;
+          left: 5px;
+          right: 4px;
+          height: 3px;
+          background-color: white;
+        }
+         
+        span::before, span::after {
+          position: absolute;
+          display: block;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: white;
+          content: "";
+        }
+         
+        span::before {
+          top: -7px;
+        }
+         
+        span::after {
+          bottom: -7px;
+        }
+
+    }
+    .active-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        flex-direction: column;
+        z-index: 100;
+        justify-content: flex-start;
+         
+        span::before, span::after {
+          transition-duration: 0.3s, 0.3s;
+          transition-delay: 0.3s, 0s;
+        }
+         
+        span::before {
+          transition-property: top, transform;
+        }
+         
+        span::after {
+          transition-property: bottom, transform;
+        }
+    }
+          
+    .nav-mobile-menu.active-menu {
+        background-color: rgb(200, 18, 18);
+    }
+    .nav-mobile-menu.active-menu span {
+        background: none;
+    }
+         
+    .nav-mobile-menu.active-menu span::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+         
+    .nav-mobile-menu.active-menu span::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+    }
+         
+    .nav-mobile-menu.active-menu span::before,
+    .nav-mobile-menu.active-menu span::after {
+        transition-delay: 0s, 0.3s;
+    }
+
+    .menu {
+        li:first-child {
+            margin-top: 60px;
+        }
+        li {
+            margin-bottom: 15px;
+            a {
+                height: 30px;
+                font-size: 20px;
+                line-height: 30px;
+            }
+        }
+    }
+
+}
+
+
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+    .menu-footer {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+        
+        li {
+            border: 2px solid transparent;
+            padding: 0 4px;
+            margin-right: 10px;
+
+            a {
+              @include linkMenuA(white,16px);
+              @include box(max-content, 30px);
+              line-height: 30px; 
+            }
+            &:hover {
+                border-color: $maincolor;
+            }
+        }
+    }
+    .categireis-card {
+        margin-top: 150px;
+    }
+    .blog-post .post-header .post-info .post-title {
+        font-size: 30px;
+    }
+ 
+}
+
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    .social-networks {
+        padding:0 0 15px 10px;
+    }
+    
+
+
+
+} 
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    .categireis-card {
+        margin-top: 120px;
+    }
+}
