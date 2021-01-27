@@ -10,28 +10,3 @@ mobileMenu.addEventListener("click",function(){
         mainMenu.classList.remove("active-menu");
     }
 })
-
-
-
-
-
-// main slider
-
-$(document).ready(function(){
-    $('.slider').bxSlider({
-      mode: 'fade',
-      captions: true,
-      slideWidth: 900,
-      slideHight: 650,
-    });
-});
-
-// sliders in post
-
-$(document).ready(function(){
-  $('.slider-post').bxSlider({
-  	pagerCustom: '.slider-nav',
-  	infiniteLoop: false,
-    hideControlOnEnd: true,
-  });
-});
